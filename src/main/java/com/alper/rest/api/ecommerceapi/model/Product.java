@@ -1,15 +1,25 @@
 package com.alper.rest.api.ecommerceapi.model;
 
+import com.alper.rest.api.ecommerceapi.serializer.CustomProductDeserializer;
+import com.alper.rest.api.ecommerceapi.serializer.CustomProductSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 @Entity
 @XmlRootElement
-public class Product {
+@JsonDeserialize(using = CustomProductDeserializer.class)
+@JsonSerialize(using = CustomProductSerializer.class)
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 6128569811206071380L;
 
     @Id
     @GeneratedValue
@@ -66,5 +76,16 @@ public class Product {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", brandName='").append(brandName).append('\'');
+        sb.append(", ownerName='").append(ownerName).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
