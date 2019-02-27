@@ -24,7 +24,7 @@ public class CustomProductSerializer extends StdSerializer<Product> {
         jsonGenerator.writeStringField("car_brand", product.getBrandName());
         jsonGenerator.writeStringField("car_name", product.getName());
         jsonGenerator.writeStringField("car_owner", product.getOwnerName());
-        jsonGenerator.writeStringField("car_id", product.getId().toString());
+//        jsonGenerator.writeStringField("car_id", product.getId().toString());
         jsonGenerator.writeEndObject();
     }
 }

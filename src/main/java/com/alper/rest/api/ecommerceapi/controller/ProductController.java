@@ -21,14 +21,14 @@ public class ProductController {
     public ProductList getProducts() {
 
         ProductList productList = new ProductList();
-        productList.setProducts(productRepository.findAll());
+        productList.setProduct(productRepository.findAll());
         return productList;
     }
 
     @GetMapping("/product/{ownerName}")
     ProductList getOwnersProduct(@PathVariable("ownerName") String ownerName) {
         ProductList productList = new ProductList();
-        productList.setProducts(productRepository.getProductByOwnerName(ownerName));
+        productList.setProduct(productRepository.getProductByOwnerName(ownerName));
         return productList;
     }
 
@@ -36,7 +36,7 @@ public class ProductController {
     @GetMapping("/product/{name}/{brandName}/{ownerName}")
     ProductList getProduct(@PathVariable("name") String name, @PathVariable("brandName") String brandName, @PathVariable("ownerName") String ownerName) {
         ProductList productList = new ProductList();
-        productList.setProducts(productRepository.getProductByNameAndBrandNameAndOwnerName(name, brandName, ownerName));
+        productList.setProduct(productRepository.getProductByNameAndBrandNameAndOwnerName(name, brandName, ownerName));
         return productList;
     }
 

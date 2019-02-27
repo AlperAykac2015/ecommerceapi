@@ -4,6 +4,7 @@ import com.alper.rest.api.ecommerceapi.serializer.CustomProductDeserializer;
 import com.alper.rest.api.ecommerceapi.serializer.CustomProductSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @Entity
-@XmlRootElement
+@XmlRootElement(name="urun")
 @JsonDeserialize(using = CustomProductDeserializer.class)
 @JsonSerialize(using = CustomProductSerializer.class)
 public class Product implements Serializable {

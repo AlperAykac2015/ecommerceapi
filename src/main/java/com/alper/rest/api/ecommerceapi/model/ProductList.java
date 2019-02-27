@@ -1,20 +1,27 @@
 package com.alper.rest.api.ecommerceapi.model;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name="urunListe")
 public class ProductList {
 
     public ProductList() {
     }
 
-    private List<Product> products;
+    @XmlElement(name="urunler")
+    private List<Product> product;
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Product> getProduct() {
+        return product;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProduct(List<Product> product) {
+        this.product = product;
     }
 }

@@ -60,7 +60,7 @@ public class EcommerceapiApplicationTests {
         ResponseEntity<ProductList> response  = this.restTemplate.getForEntity("http://localhost:" + port + "/prod/products",
                 ProductList.class);
         assertThat(response.getStatusCodeValue()).isEqualTo(HTTP_OK);
-        assertThat(response.getBody().getProducts().size()).isGreaterThan(0);
+        assertThat(response.getBody().getProduct().size()).isGreaterThan(0);
 
     }
 
@@ -70,8 +70,8 @@ public class EcommerceapiApplicationTests {
         ParameterizedTypeReference parameterizedTypeReference=		new ParameterizedTypeReference<List<Product>>(){};
         ProductList rtn = this.restTemplate.getForObject("http://localhost:" + port + "/prod/product/FIAT/F500/ALPERAYKAC",
                 ProductList.class );
-        System.out.println("--->"+rtn.getProducts().size());
-        assertThat(rtn.getProducts().size()).isGreaterThan(0);
+        System.out.println("--->"+rtn.getProduct().size());
+        assertThat(rtn.getProduct().size()).isGreaterThan(0);
     }
 
 

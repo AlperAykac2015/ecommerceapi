@@ -46,21 +46,6 @@ public class EcommerceapiApplicationAssuredTests2 {
 //        System.out.println("request-mapper:"+objectMapper.writeValueAsString(car));
     }
 
-    public static byte[] toStream(Product product) {
-        // Reference for stream of bytes
-        byte[] stream = null;
-        // ObjectOutputStream is used to convert a Java object into OutputStream
-        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-             ObjectOutputStream oos = new ObjectOutputStream(baos)) {
-            oos.writeObject(product);
-            stream = baos.toByteArray();
-        } catch (IOException e) {
-            // Error in serialization
-            e.printStackTrace();
-        }
-        return stream;
-    }
-
     @Test
     public void createNewCarShouldReturnCREATED() throws Exception {
         Product car = new Product("FIAT", "F700", "ALIARDAAYKAC");
@@ -91,7 +76,7 @@ public class EcommerceapiApplicationAssuredTests2 {
                 .then()
                 .statusCode(HttpStatus.OK.value())
                 .assertThat()
-                .body("ProductList.products.products[1].car_id", equalTo("2"));
+                .body("ProductList.product.product[1].car_id", equalTo("2"));
     }
 
 
